@@ -115,7 +115,7 @@ bool Reader::readDirectoryEnd(directoryEnd &d, bela::error_code &ec) {
       return false;
     }
   }
-  if (auto o = static_cast<int64_t>(d.directoryOffset); o < 0 || 0 >= size) {
+  if (auto o = static_cast<int64_t>(d.directoryOffset); o < 0 || o >= size) {
     ec = bela::make_error_code(L"zip: not a valid zip file");
     return false;
   }
